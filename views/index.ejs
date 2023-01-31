@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+
+    <title>CMS - Blog Minas de Presentes</title>
+</head>
+
+<body>
+    <h1>Post Generated Minas de Presentes</h1>
+
+    <div class="container">
+        <form action="/create" method="post">
+            <label>Post em Html</label><br>
+            <textarea type="text" name="content" id="input-content"></textarea><br>
+
+            <label>Título do post</label><br>
+            <input type="text" name="title" id="post-title"><br>
+
+            <label>URL do post</label><br>
+            <input type="text" name="slug" id="link-field"><br>
+            
+            <label>URL da Imagem de Capa</label><br>
+            <input type="text" name="img" id="img-field"><br>
+
+            <label>Categoria</label><br>
+            <select id="select-category" name="category">
+                <option value="">Selecione a categoria do post</option>
+                <option value="dicas-de-vendas">Dicas de Vendas</option>
+                <option value="gestao">Gestão</option>
+                <option value="negocios">Negócios</option>
+                <option value="produtos-para-revenda">Produtos Para Revenda</option>
+            </select><br>
+
+            <input type="text" name="categoryText" id="category-text" style="display: none" />
+            <input type="text" name="categoryValue" id="category-value" style="display: none" />
+            <input name="date" type="text" id="input-date" style="display: none" /><br>
+        
+
+            <label>Data da Publicação</label><br>
+            <input type="number" id="day" min="1" max="31" style="width: 30px;" />
+
+            <select name="" id="month" style="width: 120px;">
+                <option value="Janeiro">Janeiro</option>
+                <option value="Fevereiro">Fevereiro</option>
+                <option value="Março">Março</option>
+                <option value="Abril">Abril</option>
+                <option value="Maio">Maio</option>
+                <option value="Junho">Junho</option>
+                <option value="Julho">Julho</option>
+                <option value="Agosto">Agosto</option>
+                <option value="Setembro">Setembro</option>
+                <option value="Outubro">Outubro</option>
+                <option value="Novembro">Novembro</option>
+                <option value="Dezembro">Dezembro</option>
+            </select>
+
+            <select id="year" style="width: 80px;">
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+            </select><br>
+
+            <label>Meta Title</label><br>
+            <input type="text" name="metaTitle"><br>
+
+            <label>Meta Description</label><br>
+            <textarea id="description" name="description"></textarea>
+            <button type="submit" id="submit">ENVIAR</button>
+            
+
+
+        </form>
+    </div>
+    <script>
+        const selectCategory = document.getElementById('select-category');
+        const categoryText = document.getElementById('category-text');
+        const categoryValue = document.getElementById('category-value');
+
+        selectCategory.addEventListener( 'change', () => {
+            categoryText.value = selectCategory.options[selectCategory.selectedIndex].text;
+            categoryValue.value = selectCategory.options[selectCategory.selectedIndex].value;
+            
+        });
+
+        const selectMonth = document.getElementById('month');
+        const inputDate = document.getElementById('input-date');
+        const selectYear = document.getElementById('year');
+        let day;
+        let month;
+        let year;
+
+        selectYear.addEventListener('change', () => {
+            day = document.getElementById('day').value;
+            month = selectMonth.options[selectMonth.selectedIndex].value
+            year = selectYear.options[selectYear.selectedIndex].value;
+            inputDate.value = `${day} ${month} ${year}`;
+        });
+    </script>
+</body>
+
+</html>
